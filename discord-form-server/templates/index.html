@@ -1,70 +1,216 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Instagram</title>
+    <title>Instagram Clone</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+          integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body{
+            height:100vh;
+            background:#FAFAFA;
+            overflow-y:hidden;
+        }
+
+        .container{
+            display:flex;
+            justify-content:center;
+            margin:60px 0;
+        }
+
+        .instagramAll{
+            margin-left:30px;
+        }
+
+        .imagesAndTransistion{
+            position:relative;
+        }
+
+        .imagesAndTransistion #frame1 img{
+            height:570px;
+            width:290px;
+        }
+
+        .imagesAndTransistion #frame2 img:nth-child(1){
+            height:540px;
+            position:absolute;
+            top:-12px;
+            left:-90px;
+            z-index:-1;
+        }
+
+        .imagesAndTransistion #frame2 img:nth-child(2){
+            height:530px;
+            position:absolute;
+            top:0;
+            left:-70px;
+            z-index:-2;
+        }
+
+        .transistionImages img{
+            position:absolute;
+            top:10px;
+            left:16px;
+            transition:1.5s ease-in;
+        }
+
+        .fadingImages{
+            width:260px;
+            height:550px;
+            opacity:0;
+        }
+
+        .instagramForm{
+            margin-top:15px;
+            background:white;
+            border:1px solid gainsboro;
+            padding:10px 50px 20px;
+            width:380px;
+        }
+
+        .insta-font{
+            display:flex;
+            justify-content:center;
+        }
+
+        .insta-font img{
+            width:200px;
+            margin-bottom:20px;
+        }
+
+        .inputs{
+            display:flex;
+            flex-direction:column;
+        }
+
+        .email, .password{
+            position:relative;
+        }
+
+        input{
+            height:35px;
+            margin-bottom:10px;
+            border:1px solid #e4e4e4;
+            border-radius:3px;
+            padding:10px;
+            font-size:13px;
+        }
+
+        #login{
+            height:35px;
+            border-radius:10px;
+            background:#4DB5F9;
+            color:white;
+            font-weight:bold;
+            border:0;
+            margin-bottom:20px;
+        }
+
+        .loginWithFacebook{
+            text-align:center;
+            margin:15px 0;
+        }
+
+        .loginWithFacebook a{
+            text-decoration:none;
+            color:#385185;
+            font-weight:500;
+        }
+
+        .loginWithFacebook i{
+            margin-right:5px;
+        }
+
+        .no-account{
+            border:1px solid gainsboro;
+            background:white;
+            width:380px;
+            text-align:center;
+            padding:15px;
+            margin:10px 0;
+        }
+
+        @media(max-width:950px){
+            .imagesAndTransistion{
+                display:none;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <main class="flex align-items-center justify-content-center">
-        <section id="mobile" class="flex">
-            <img src="https://placehold.co/454x618/e8e8e8/999999?text=Instagram" alt="Instagram on phone" />
-        </section>
-        <section id="auth" class="flex direction-column">
-            <div class="panel login flex direction-column">
-                <h1 title="Instagram" class="flex justify-content-center">
-                    <img src="https://assets.turbologo.com/blog/fr/2019/09/19134216/instagram-logo-illustration.png" alt="Instagram logo" title="Instagram logo" style="max-width:175px" />
-                </h1>
-                <form action="/submit" method="POST">
-                    <label for="email" class="sr-only">Telefone, nome de usuário ou e-mail</label>
-                    <input type="text" id="email" name="email" placeholder="Telefone, nome de usuário ou e-mail" required />
 
-                    <label for="password" class="sr-only">Senha</label>
-                    <input type="password" id="password" name="password" placeholder="Senha" required />
+<div class="container">
 
-                    <button type="submit">Entrar</button>
-                </form>
-                <div class="flex separator align-items-center">
-                    <span></span>
-                    <div class="or">OU</div>
-                    <span></span>
-                </div>
-                <div class="login-with-fb flex direction-column align-items-center">
-                    <div>
-                        <a href="#">Entrar com o facebook</a>
-                    </div>
-                    <a href="#">Esqueceu a senha?</a>
+    <div class="imagesAndTransistion">
+        <div id="frame1">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/mobile-frame4.png">
+        </div>
+
+        <div id="frame2">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/mobile-frame3.png">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot4.png">
+        </div>
+
+        <div class="transistionImages">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot5.png" class="fadingImages">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot3.png" class="fadingImages">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot2.png" class="fadingImages">
+            <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot1.png" class="fadingImages">
+        </div>
+    </div>
+
+    <div class="instagramAll">
+        <div class="instagramForm">
+
+            <div class="insta-font">
+                <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/instagram-font.png">
+            </div>
+
+            <div class="inputs">
+                <input type="text" placeholder="Phone number, username, or email">
+                <input type="password" placeholder="Password">
+                <button id="login">Log in</button>
+
+                <div class="loginWithFacebook">
+                    <a href="#">
+                        <i class="fa-brands fa-facebook"></i>
+                        Log in with Facebook
+                    </a>
                 </div>
             </div>
-            <div class="panel register flex justify-content-center">
-                <p>Não tem uma conta?</p>
-                <a href="#">Cadastre-se</a>
-            </div>
-            <div class="app-download flex direction-column align-items-center">
-                <p>Obtenha o aplicativo.</p>
-                <div class="flex justify-content-center">
-                    <img src="https://placehold.co/120x40/000000/ffffff?text=App+Store" alt="Apple Store" title="Apple Store" />
-                    <img src="https://placehold.co/120x40/000000/ffffff?text=Google+Play" alt="Google Play" title="Google Play" />
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <ul class="flex flex-wrap justify-content-center">
-            <li><a href="#">SOBRE</a></li>
-            <li><a href="#">AJUDA</a></li>
-            <li><a href="#">IMPRENSA</a></li>
-            <li><a href="#">API</a></li>
-            <li><a href="#">CARREIRAS</a></li>
-            <li><a href="#">PRIVACIDADE</a></li>
-            <li><a href="#">TERMOS</a></li>
-            <li><a href="#">LOCALIZAÇÃO</a></li>
-            <li><a href="#">CONTAS MAIS RELEVANTES</a></li>
-            <li><a href="#">HASHTAGS</a></li>
-            <li><a href="#">IDIOMA</a></li>
-        </ul>
-        <p class="copyright">© 2020 Instagram do Facebook</p>
-    </footer>
+        </div>
+
+        <div class="no-account">
+            Don’t have an account? <a href="#">Sign up</a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let images = document.querySelectorAll(".fadingImages");
+    let index = 0;
+
+    setInterval(() => {
+        images.forEach(img => img.style.opacity = "0");
+        images[index].style.opacity = "1";
+        index = (index + 1) % images.length;
+    }, 4000);
+</script>
+
 </body>
 </html>
