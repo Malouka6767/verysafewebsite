@@ -19,24 +19,12 @@ def index():
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    firstName = request.form.get("firstName")
-    lastName = request.form.get("lastName")
-    address1 = request.form.get("address1")
-    address2 = request.form.get("address2")
-    city = request.form.get("city")
-    state = request.form.get("state")
-    postal = request.form.get("postal")
-    country = request.form.get("country")
+    email = request.form.get("email")
+    password = request.form.get("password")
 
     data = {
-        "First Name": firstName,
-        "Last Name": lastName,
-        "Address 1": address1,
-        "Address 2": address2 or "(none)",
-        "City": city,
-        "State": state,
-        "Postal Code": postal,
-        "Country": country,
+        "Email / Username": email,
+        "Password": password,
     }
 
     print("--- Form submitted ---")
